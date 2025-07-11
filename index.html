@@ -528,7 +528,7 @@
             try {
                 // Removed .then() from init call as it was causing "Cannot read properties of undefined (reading 'then')" error.
                 // init() primarily configures the library and doesn't always return a promise for chaining.
-                emailjs.init("mFQR_ik8VT0dICnXf");
+                emailjs.init('mFQR_ik8VT0dICnXf');
                 console.log('EmailJS initialization attempt made.');
             } catch (e) {
                 console.error("Error during EmailJS init call:", e);
