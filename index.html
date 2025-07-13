@@ -1,724 +1,433 @@
 <!DOCTYPE html>
-<html lang="af">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MBTI Analise Vraelys</title>
-    <meta property="og:title" content="MBTI Analise Vorm" />
-    <meta property="og:description" content="Vul hierdie MBTI vorm in as deel van jou persoonlike profiel en berading." />
-    <meta property="og:image" content="https://placehold.co/1200x630/764ba2/ffffff?text=MBTI+Persoonlikheidstoets" /> <!-- Placeholder image for social media sharing -->
-    <meta property="og:url" content="https://jouwebwerf.com/mbti-analise-vorm/" /> <!-- Replace with your actual URL -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <style>
-        /* Global reset and base styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Inter', sans-serif; /* Using Inter font as per instructions */
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start; /* Align to top for better scrolling */
-        }
-        .container {
-            max-width: 800px;
-            width: 100%;
-            margin: 20px auto; /* Add margin for better spacing on large screens */
-            background: white;
-            border-radius: 15px; /* Rounded corners */
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            overflow: hidden;
-            padding: 30px;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 30px;
-            font-size: 2.2em;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #eee;
-        }
-        .question-group {
-            margin-bottom: 25px;
-            background-color: #f9f9f9;
-            border-left: 5px solid #764ba2;
-            padding: 20px;
-            border-radius: 8px; /* Rounded corners */
-        }
-        .question-group h3 {
-            margin-bottom: 15px;
-            color: #555;
-            font-size: 1.1em;
-        }
-        .options-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .option-item {
-            display: flex;
-            align-items: center;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px; /* Rounded corners */
-            padding: 12px 15px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, border-color 0.3s ease;
-        }
-        .option-item:hover {
-            background-color: #f0f0f0;
-            border-color: #764ba2;
-        }
-        .option-item input[type="radio"] {
-            margin-right: 12px;
-            transform: scale(1.2);
-            accent-color: #764ba2; /* Custom accent color for radio buttons */
-        }
-        .option-item label {
-            flex-grow: 1;
-            cursor: pointer;
-            color: #444;
-        }
-        .error-message {
-            color: #e74c3c;
-            font-size: 0.9em;
-            margin-top: 5px;
-            display: none; /* Hidden by default */
-        }
-        .form-actions {
-            text-align: center;
-            margin-top: 30px;
-        }
-        .form-actions button {
-            background-color: #764ba2;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 8px; /* Rounded corners */
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Add shadow for depth */
-        }
-        .form-actions button:hover {
-            background-color: #667eea;
-            transform: translateY(-2px); /* Slight lift effect on hover */
-        }
-        .results-container {
-            margin-top: 40px;
-            padding: 25px;
-            background-color: #eef;
-            border-radius: 10px; /* Rounded corners */
-            border: 1px solid #cdd;
-            display: none; /* Hidden initially */
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .results-container h2 {
-            color: #333;
-            margin-bottom: 15px;
-        }
-        .results-container p {
-            font-size: 1.1em;
-            color: #555;
-            line-height: 1.6;
-        }
-        .results-container strong {
-            color: #764ba2;
-            font-weight: bold;
-        }
-        .name-input {
-            margin-bottom: 25px;
-            text-align: center;
-        }
-        .name-input label {
-            display: block;
-            margin-bottom: 10px;
-            font-size: 1.1em;
-            color: #555;
-        }
-        .name-input input[type="text"] {
-            width: 70%;
-            max-width: 300px; /* Limit width for better aesthetics */
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px; /* Rounded corners */
-            font-size: 1em;
-        }
+    <title>MBTI Persoonlikheidsanalise</title>
 
-        /* Responsive adjustments */
-        @media (max-width: 600px) {
-            .container {
-                padding: 15px;
-                margin: 10px auto;
-            }
-            h1 {
-                font-size: 1.8em;
-                margin-bottom: 20px;
-            }
-            .question-group {
-                padding: 15px;
-            }
-            .option-item {
-                padding: 10px;
-            }
-            .form-actions button {
-                padding: 12px 25px;
-                font-size: 1em;
-            }
-            .name-input input[type="text"] {
-                width: 90%;
-            }
+    <!-- Open Graph Meta Tags for WhatsApp Sharing -->
+    <meta property="og:title" content="MBTI Persoonlikheidsanalise">
+    <meta property="og:description" content="Discover your personality type with our MBTI questionnaire.">
+    <meta property="og:image" content="https://i.imgur.com/ikNzOKF.png">
+    <meta property="og:url" content="https://qgroenewald-disk.github.io/mbti-analise/"> <!-- Updated with your GitHub Pages URL -->
+    <meta property="og:type" content="website">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for Inter font */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom class for border color matching bg-blue-600 */
+        .border-custom-blue {
+            border-left-color: #2563EB; /* Tailwind's blue-600 hex code */
+        }
+        /* Class for highlighting unanswered questions */
+        .border-error {
+            border-color: #EF4444; /* Tailwind's red-500 hex code */
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
-<body>
-    <div class="container">
-        <h1>MBTI Analise Vraelys</h1>
-        <form id="mbtiForm">
-            <div class="name-input">
-                <label for="userName">Jou Naam:</label>
-                <input type="text" id="userName" name="userName" required>
-                <div class="error-message" id="error_userName">Vul asseblief jou naam in.</div>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center py-10 px-4">
+    <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-2xl">
+        <!-- Logo and Title Section -->
+        <div class="flex items-center mb-6">
+            <!-- Responsive logo size: w-16 h-16 on mobile, w-24 h-24 on sm and up -->
+            <img src="https://i.imgur.com/ikNzOKF.png" alt="MBTI Logo" class="w-16 h-16 sm:w-24 sm:h-24 mr-4 rounded-full shadow-md">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-800 mb-2 whitespace-nowrap">
+                    MBTI <span class="block sm:inline">Persoonlikheids-</span><span class="block sm:inline">analise</span>
+                </h1>
+                <p class="text-gray-600 text-sm">
+                    Beantwoord die volgende vrae eerlik om jou persoonlikheidstipe te bepaal. Daar is geen regte of verkeerde antwoorde nie. Kies die opsie wat die beste by jou pas.
+                </p>
             </div>
-
-            <!-- Vraag 1: Ekstroversie (E) / Introversie (I) -->
-            <div class="question-group">
-                <h3>1. Wanneer jy gestres is, wat help jou die meeste?</h3>
-                <div class="options-container">
-                    <label class="option-item">
-                        <input type="radio" name="q1" value="E" required>
-                        A) Praat met vriende of familie daaroor
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="q1" value="I">
-                        B) Alleen-tyd neem om te dink en te proseseer
-                    </label>
-                </div>
-                <div class="error-message" id="error_q1">Kies asseblief 'n opsie.</div>
-            </div>
-
-            <!-- Vraag 2: Ekstroversie (E) / Introversie (I) -->
-            <div class="question-group">
-                <h3>2. Op 'n party of sosiale byeenkoms:</h3>
-                <div class="options-container">
-                    <label class="option-item">
-                        <input type="radio" name="q2" value="E" required>
-                        A) Gesels jy met baie mense en voel gelaai
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="q2" value="I">
-                        B) Hou jy by 'n paar mense en voel uitgeput na 'n ruk
-                    </label>
-                </div>
-                <div class="error-message" id="error_q2">Kies asseblief 'n opsie.</div>
-            </div>
-
-            <!-- Vraag 3: Ekstroversie (E) / Introversie (I) -->
-            <div class="question-group">
-                <h3>3. Wanneer jy 'n probleem probeer oplos:</h3>
-                <div class="options-container">
-                    <label class="option-item">
-                        <input type="radio" name="q3" value="E" required>
-                        A) Dink jy hardop en bespreek dit met ander
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="q3" value="I">
-                        B) Dink jy eers deeglik daaroor voor jy dit deel
-                    </label>
-                </div>
-                <div class="error-message" id="error_q3">Kies asseblief 'n opsie.</div>
-            </div>
-
-            <!-- Vraag 4: Ekstroversie (E) / Introversie (I) -->
-            <div class="question-group">
-                <h3>4. Jou ideale naweek sou wees:</h3>
-                <div class="options-container">
-                    <label class="option-item">
-                        <input type="radio" name="q4" value="E" required>
-                        A) Verskeie aktiwiteite met vriende en familie
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="q4" value="I">
-                        B) Rustige tyd tuis met 'n goeie boek of stokperdjie
-                    </label>
-                </div>
-                <div class="error-message" id="error_q4">Kies asseblief 'n opsie.</div>
-            </div>
-
-            <!-- Vraag 5: Ekstroversie (E) / Introversie (I) -->
-            <div class="question-group">
-                <h3>5. Wanneer jy nuwe mense ontmoet:</h3>
-                <div class="options-container">
-                    <label class="option-item">
-                        <input type="radio" name="q5" value="E" required>
-                        A) Voel jy gemaklik om eerste kontak te maak
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="q5" value="I">
-                        B) Wag jy liewer dat hulle eerste nader kom
-                    </label>
-                </div>
-                <div class="error-message" id="error_q5">Kies asseblief 'n opsie.</div>
-            </div>
-
-            <!-- Vraag 6: Sensing (S) / Intuition (N) -->
-            <div class="question-group">
-                <h3>6. Wanneer jy 'n nuwe projek begin:</h3>
-                <div class="options-container">
-                    <label class="option-item">
-                        <input type="radio" name="q6" value="S" required>
-                        A) Begin jy met konkrete stappe en praktiese details
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="q6" value="N">
-                        B) Begin jy met die groot prentjie en moontlikhede
-                    </label>
-                </div>
-                <div class="error-message" id="error_q6">Kies asseblief 'n opsie.</div>
-            </div>
-
-            <!-- Vraag 7: Sensing (S) / Intuition (N) -->
-            <div class="question-group">
-                <h3>7. Jy verkies instruksies wat:</h3>
-                <div class="options-container">
-                    <label class="option-item">
-                        <input type="radio" name="q7" value="S" required>
-                        A) Stap-vir-stap en spesifiek is
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="q7" value="N">
-                        B) Die doel verduidelik sodat jy jou eie weg kan vind
-                    </label>
-                </div>
-                <div class="error-message" id="error_q7">Kies asseblief 'n opsie.</div>
-            </div>
-
-            <!-- Vraag 8: Sensing (S) / Intuition (N) -->
-            <div class="question-group">
-                <h3>8. Wanneer jy inligting verwerk:</h3>
-                <div class="options-container">
-                    <label class="option-item">
-                        <input type="radio" name="q8" value="S" required>
-                        A) Gee jy akkurate details en feite
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="q8" value="N">
-                        B) Fokus jy op die betekenis en impak
-                    </label>
-                </div>
-                <div class="error-message" id="error_q8">Kies asseblief 'n opsie.</div>
-            </div>
-
-            <!-- Vraag 9: Sensing (S) / Intuition (N) -->
-            <div class="question-group">
-                <h3>9. Jy vind dit meer interessant om te praat oor:</h3>
-                <div class="options-container">
-                    <label class="option-item">
-                        <input type="radio" name="q9" value="S" required>
-                        A) Praktiese dinge en werklike ervarings
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="q9" value="N">
-                        B) Idees, teorieë en toekomsmoontlikhede
-                    </label>
-                </div>
-                <div class="error-message" id="error_q9">Kies asseblief 'n opsie.</div>
-            </div>
-
-            <!-- Vraag 10: Sensing (S) / Intuition (N) -->
-            <div class="question-group">
-                <h3>10. Wanneer jy 'n besluit moet maak:</h3>
-                <div class="options-container">
-                    <label class="option-item">
-                        <input type="radio" name="q10" value="S" required>
-                        A) Kyk jy na wat in die verlede gewerk het
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="q10" value="N">
-                        B) Ondersoek jy nuwe en innoverende opsies
-                    </label>
-                </div>
-                <div class="error-message" id="error_q10">Kies asseblief 'n opsie.</div>
-            </div>
-
-            <!-- Vraag 11: Thinking (T) / Feeling (F) -->
-            <div class="question-group">
-                <h3>11. Wanneer jy 'n dispuut moet oplos:</h3>
-                <div class="options-container">
-                    <label class="option-item">
-                        <input type="radio" name="q11" value="T" required>
-                        A) Fokus jy op feite en logiese oplossings
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="q11" value="F">
-                        B) Oorweeg jy hoe almal daaroor sal voel
-                    </label>
-                </div>
-                <div class="error-message" id="error_q11">Kies asseblief 'n opsie.</div>
-            </div>
-
-            <!-- Vraag 12: Thinking (T) / Feeling (F) -->
-            <div class="question-group">
-                <h3>12. Jy maak besluite hoofsaaklik gebaseer op:</h3>
-                <div class="options-container">
-                    <label class="option-item">
-                        <input type="radio" name="q12" value="T" required>
-                        A) Wat logies en effektief is
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="q12" value="F">
-                        B) Wat in lyn is met jou waardes en ander se behoeftes
-                    </label>
-                </div>
-                <div class="error-message" id="error_q12">Kies asseblief 'n opsie.</div>
-            </div>
-
-            <!-- Vraag 13: Thinking (T) / Feeling (F) -->
-            <div class="question-group">
-                <h3>13. Wanneer jy kritiek gee:</h3>
-                <div class="options-container">
-                    <label class="option-item">
-                        <input type="radio" name="q13" value="T" required>
-                        A) Is jy reguit en fokus op wat verbeter kan word
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="q13" value="F">
-                        B) Probeer jy dit sagkens sê om nie gevoelens te seer nie
-                    </label>
-                </div>
-                <div class="error-message" id="error_q13">Kies asseblief 'n opsie.</div>
-            </div>
-
-            <!-- Vraag 14: Thinking (T) / Feeling (F) -->
-            <div class="question-group">
-                <h3>14. Jy waardeer mense wat:</h3>
-                <div class="options-container">
-                    <label class="option-item">
-                        <input type="radio" name="q14" value="T" required>
-                        A) Regverdig en konsekwent is
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="q14" value="F">
-                        B) Empaties en verstaan is
-                    </label>
-                </div>
-                <div class="error-message" id="error_q14">Kies asseblief 'n opsie.</div>
-            </div>
-
-            <!-- Vraag 15: Thinking (T) / Feeling (F) -->
-            <div class="question-group">
-                <h3>15. In 'n spanomgewing:</h3>
-                <div class="options-container">
-                    <label class="option-item">
-                        <input type="radio" name="q15" value="T" required>
-                        A) Fokus jy op doeltreffendheid en resultate
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="q15" value="F">
-                        B) Maak jy seker almal voel ingesluit en gewaardeer
-                    </label>
-                </div>
-                <div class="error-message" id="error_q15">Kies asseblief 'n opsie.</div>
-            </div>
-
-            <!-- Vraag 16: Judging (J) / Perceiving (P) -->
-            <div class="question-group">
-                <h3>16. Jou werkruimte is gewoonlik:</h3>
-                <div class="options-container">
-                    <label class="option-item">
-                        <input type="radio" name="q16" value="J" required>
-                        A) Netjies en georganiseer
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="q16" value="P">
-                        B) 'n Bietjie rommelig maar jy weet waar alles is
-                    </label>
-                </div>
-                <div class="error-message" id="error_q16">Kies asseblief 'n opsie.</div>
-            </div>
-
-            <!-- Vraag 17: Judging (J) / Perceiving (P) -->
-            <div class="question-group">
-                <h3>17. Wanneer jy vakansie beplan:</h3>
-                <div class="options-container">
-                    <label class="option-item">
-                        <input type="radio" name="q17" value="J" required>
-                        A) Maak jy 'n gedetailleerde plan en hou daarby
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="q17" value="P">
-                        B) Hou jy dit oop vir spontane aktiwiteite en veranderinge
-                    </label>
-                </div>
-                <div class="error-message" id="error_q17">Kies asseblief 'n opsie.</div>
-            </div>
-
-            <!-- Vraag 18: Judging (J) / Perceiving (P) -->
-            <div class="question-group">
-                <h3>18. Jou benadering tot take is om:</h3>
-                <div class="options-container">
-                    <label class="option-item">
-                        <input type="radio" name="q18" value="J" required>
-                        A) Dadelik aan die gang te kom en dit af te handel
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="q18" value="P">
-                        B) Die opsies te verken en dan eers te besluit
-                    </label>
-                </div>
-                <div class="error-message" id="error_q18">Kies asseblief 'n opsie.</div>
-            </div>
-
-            <!-- Vraag 19: Judging (J) / Perceiving (P) -->
-            <div class="question-group">
-                <h3>19. Jy voel meer gemaklik wanneer:</h3>
-                <div class="options-container">
-                    <label class="option-item">
-                        <input type="radio" name="q19" value="J" required>
-                        A) Jy weet wat van jou verwag word
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="q19" value="P">
-                        B) Jy vryheid het om te improviseer
-                    </label>
-                </div>
-                <div class="error-message" id="error_q19">Kies asseblief 'n opsie.</div>
-            </div>
-
-            <!-- Vraag 20: Judging (J) / Perceiving (P) -->
-            <div class="question-group">
-                <h3>20. Sperdatums is vir jou:</h3>
-                <div class="options-container">
-                    <label class="option-item">
-                        <input type="radio" name="q20" value="J" required>
-                        A) Ernstig en jy probeer altyd betyds wees
-                    </label>
-                    <label class="option-item">
-                        <input type="radio" name="q20" value="P">
-                        B) Riglyne wat aangepas kan word indien nodig
-                    </label>
-                </div>
-                <div class="error-message" id="error_q20">Kies asseblief 'n opsie.</div>
-            </div>
-
-            <div class="form-actions">
-                <button type="submit">Sien My MBTI Tipe</button>
-            </div>
-        </form>
-
-        <div id="results" class="results-container">
-            <h2>Jou MBTI Resultaat:</h2>
-            <p>Hallo <strong id="displayedUserName"></strong>,</p>
-            <p>Jou berekende MBTI-tipe is: <strong id="mbtiType"></strong></p>
-            <p>Die resultate is ook na jou gestuur (indien EmailJS gekonfigureer is).</p>
         </div>
+
+        <!-- Name Input -->
+        <div class="mb-6">
+            <label for="userName" class="block text-gray-700 text-sm font-semibold mb-2">Jou Naam:</label>
+            <input type="text" id="userName" placeholder="Voer jou naam hier in"
+                   class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+
+        <!-- Questions Section -->
+        <div id="questionsContainer" class="space-y-6 mb-8">
+            <!-- Questions will be dynamically loaded here -->
+        </div>
+
+        <!-- Submit Button -->
+        <button id="submitBtn"
+                class="w-full bg-blue-600 text-white py-3 rounded-md font-semibold hover:bg-blue-700 transition duration-300 ease-in-out shadow-lg">
+            Bereken Resultate
+        </button>
+
+        <!-- Results Section -->
+        <div id="resultsContainer" class="mt-8 p-6 bg-blue-50 border border-blue-200 rounded-lg text-center hidden">
+            <h2 class="text-2xl font-bold text-blue-800 mb-3">Jou MBTI Tipe:</h2>
+            <p id="mbtiResultDisplay" class="text-4xl font-extrabold text-blue-600 mb-4"></p>
+            <p class="text-blue-700">Jou resultate is ook per e-pos aan jou gestuur.</p>
+        </div>
+
+        <!-- Message Box for Email Status -->
+        <div id="messageBox" class="mt-4 p-4 rounded-md text-sm text-center hidden" role="alert"></div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script>
-        // Initialize EmailJS with your public key
-        // IMPORTANT: The Public Key is 'mFQR_ik8VT0dICnXf'.
-        (function() {
-            try {
-                // Removed .then() from init call as it was causing "Cannot read properties of undefined (reading 'then')" error.
-                // init() primarily configures the library and doesn't always return a promise for chaining.
-                emailjs.init('rES387Z_beB0IEiRm');
-                console.log('EmailJS initialization attempt made.');
-            } catch (e) {
-                console.error("Error during EmailJS init call:", e);
-                displayMessageBox('Onverwagte fout tydens e-posdiens inisialisering.');
+    <!-- EmailJS CDN -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Initialize EmailJS with your Public Key
+        emailjs.init("rES387Z_beB0IEiRm");
+
+        // Define the questions for the MBTI assessment from the provided document
+        const allQuestions = [
+            // Extroversion (E) vs. Introversion (I)
+            {
+                id: 'q1',
+                text: 'Wanneer jy gestres is, wat help jou die meeste?',
+                options: [
+                    { text: 'Praat met vriende of familie daaroor', value: 'E', type: 'EI' },
+                    { text: 'Alleen-tyd neem om te dink en te prosesseer', value: 'I', type: 'EI' }
+                ]
+            },
+            {
+                id: 'q2',
+                text: 'Op \'n party of sosiale byeenkoms:',
+                options: [
+                    { text: 'Gesels jy met baie mense en voel gelaai', value: 'E', type: 'EI' },
+                    { text: 'Hou jy by \'n paar mense en voel uitgeput na \'n ruk', value: 'I', type: 'EI' }
+                ]
+            },
+            {
+                id: 'q3',
+                text: 'Wanneer jy \'n probleem probeer oplos:',
+                options: [
+                    { text: 'Dink jy hardop en bespreek dit met ander', value: 'E', type: 'EI' },
+                    { text: 'Dink jy eers deeglik daaroor voor jy dit deel', value: 'I', type: 'EI' }
+                ]
+            },
+            {
+                id: 'q4',
+                text: 'Jou ideale naweek sou wees:',
+                options: [
+                    { text: 'Verskeie aktiwiteite met vriende en familie', value: 'E', type: 'EI' },
+                    { text: 'Rustige tyd tuis met \'n goeie boek of stokperdjie', value: 'I', type: 'EI' }
+                ]
+            },
+            {
+                id: 'q5',
+                text: 'Wanneer jy nuwe mense ontmoet:',
+                options: [
+                    { text: 'Voel jy gemaklik om eerste kontak te maak', value: 'E', type: 'EI' },
+                    { text: 'Wag jy liewer dat hulle eerste nader kom', value: 'I', type: 'EI' }
+                ]
+            },
+
+            // Sensing (S) vs. Intuition (N)
+            {
+                id: 'q6',
+                text: 'Wanneer jy \'n nuwe projek begin:',
+                options: [
+                    { text: 'Begin jy met konkrete stappe en praktiese details', value: 'S', type: 'SN' },
+                    { text: 'Begin jy met die groot prentjie en moontlikhede', value: 'N', type: 'SN' }
+                ]
+            },
+            {
+                id: 'q7',
+                text: 'Jy verkies instruksies wat:',
+                options: [
+                    { text: 'Stap-vir-stap en spesifiek is', value: 'S', type: 'SN' },
+                    { text: 'Die doel verduidelik sodat jy jou eie weg kan vind', value: 'N', type: 'SN' }
+                ]
+            },
+            {
+                id: 'q8',
+                text: 'Wanneer jy \'n verhaal vertel:',
+                options: [
+                    { text: 'Gee jy akkurate details en feite', value: 'S', type: 'SN' },
+                    { text: 'Fokus jy op die betekenis en impak', value: 'N', type: 'SN' }
+                ]
+            },
+            {
+                id: 'q9',
+                text: 'Jy vind dit meer interessant om te praat oor:',
+                options: [
+                    { text: 'Praktiese dinge en werklike ervarings', value: 'S', type: 'SN' },
+                    { text: 'Idees, teorieë en toekomsmoontlikhede', value: 'N', type: 'SN' }
+                ]
+            },
+            {
+                id: 'q10',
+                text: 'Wanneer jy \'n besluit moet maak:',
+                options: [
+                    { text: 'Kyk jy na wat in die verlede gewerk het', value: 'S', type: 'SN' },
+                    { text: 'Ondersoek jy nuwe en innoverende opsies', value: 'N', type: 'SN' }
+                ]
+            },
+
+            // Thinking (T) vs. Feeling (F)
+            {
+                id: 'q11',
+                text: 'Wanneer jy \'n dispuut moet oplos:',
+                options: [
+                    { text: 'Fokus jy op feite en logiese oplossings', value: 'T', type: 'TF' },
+                    { text: 'Oorweeg jy hoe almal daaroor sal voel', value: 'F', type: 'TF' }
+                ]
+            },
+            {
+                id: 'q12',
+                text: 'Jy maak besluite hoofsaaklik gebaseer op:',
+                options: [
+                    { text: 'Wat logies en effektief is', value: 'T', type: 'TF' },
+                    { text: 'Wat in lyn is met jou waardes en ander se behoeftes', value: 'F', type: 'TF' }
+                ]
+            },
+            {
+                id: 'q13',
+                text: 'Wanneer jy kritiek gee:',
+                options: [
+                    { text: 'Is jy reguit en fokus op wat verbeter kan word', value: 'T', type: 'TF' },
+                    { text: 'Probeer jy dit sagkens sê om nie gevoelens te seer nie', value: 'F', type: 'TF' }
+                ]
+            },
+            {
+                id: 'q14',
+                text: 'Jy waardeer mense wat:',
+                options: [
+                    { text: 'Regverdig en konsekwent is', value: 'T', type: 'TF' },
+                    { text: 'Empaties en verstaan is', value: 'F', type: 'TF' }
+                ]
+            },
+            {
+                id: 'q15',
+                text: 'In \'n spanomgewing:',
+                options: [
+                    { text: 'Fokus jy op doeltreffendheid en resultate', value: 'T', type: 'TF' },
+                    { text: 'Maak jy seker almal voel ingesluit en gewaardeer', value: 'F', type: 'TF' }
+                ]
+            },
+
+            // Judging (J) vs. Perceiving (P)
+            {
+                id: 'q16',
+                text: 'Jou werkruimte is gewoonlik:',
+                options: [
+                    { text: 'Netjies en georganiseer', value: 'J', type: 'JP' },
+                    { text: '\'n Bietjie rommelig maar jy weet waar alles is', value: 'P', type: 'JP' }
+                ]
+            },
+            {
+                id: 'q17',
+                text: 'Wanneer jy vakansie beplan:',
+                options: [
+                    { text: 'Maak jy \'n gedetailleerde roete en besprekings vooraf', value: 'J', type: 'JP' },
+                    { text: 'Kyk jy wat gebeur en besluit spontaan', value: 'P', type: 'JP' }
+                ]
+            },
+            {
+                id: 'q18',
+                text: 'Jy verkies om te werk:',
+                options: [
+                    { text: 'Met duidelike sperdatums en strukture', value: 'J', type: 'JP' },
+                    { text: 'Met buigsaamheid en oop keuses', value: 'P', type: 'JP' }
+                ]
+            },
+            {
+                id: 'q19',
+                text: 'Wanneer jy \'n taak kry:',
+                options: [
+                    { text: 'Begin jy gou sodat jy betyds kan klaarmaak', value: 'J', type: 'JP' },
+                    { text: 'Werk jy die beste onder druk naby die sperdatum', value: 'P', type: 'JP' }
+                ]
+            },
+            {
+                id: 'q20',
+                text: 'Jy voel meer gemaklik wanneer:',
+                options: [
+                    { text: 'Planne gemaak is en dinge bepaal is', value: 'J', type: 'JP' },
+                    { text: 'Opsies oop gehou word vir verandering', value: 'P', type: 'JP' }
+                ]
             }
-        })();
+        ];
 
-        document.getElementById('mbtiForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
+        const questionsContainer = document.getElementById('questionsContainer');
+        const submitBtn = document.getElementById('submitBtn');
+        const resultsContainer = document.getElementById('resultsContainer');
+        const mbtiResultDisplay = document.getElementById('mbtiResultDisplay');
+        const userNameInput = document.getElementById('userName');
+        const messageBox = document.getElementById('messageBox');
 
-            let allValid = true;
+        let shuffledQuestions = [];
 
-            // Validate user name
-            const userNameInput = document.getElementById('userName');
-            const userNameError = document.getElementById('error_userName');
-            if (userNameInput.value.trim() === '') {
-                userNameError.style.display = 'block';
-                allValid = false;
-            } else {
-                userNameError.style.display = 'none';
+        // Function to shuffle an array (Fisher-Yates algorithm)
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]]; // Swap elements
             }
+            return array;
+        }
 
-            // Loop through each question to ensure an option is selected
-            for (let i = 1; i <= 20; i++) {
-                const questionName = `q${i}`;
-                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
-                const errorMessage = document.getElementById(`error_q${i}`);
+        // Function to display messages in the message box
+        function showMessage(message, type) {
+            messageBox.textContent = message;
+            messageBox.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800');
+            if (type === 'success') {
+                messageBox.classList.add('bg-green-100', 'text-green-800');
+            } else if (type === 'error') {
+                messageBox.classList.add('bg-red-100', 'text-red-800');
+            }
+            // No automatic hide for real-time validation messages, they're managed by validateQuestionsRealTime
+        }
 
-                if (!selectedOption) {
-                    errorMessage.style.display = 'block';
-                    allValid = false;
+        // Function to validate questions in real-time and provide visual feedback
+        function validateQuestionsRealTime() {
+            let hasUnansweredQuestions = false;
+            let firstUnansweredQuestionElement = null;
+
+            shuffledQuestions.forEach((question, index) => {
+                const questionDiv = document.querySelector(`#questionsContainer > div:nth-child(${index + 1})`);
+                const radios = document.querySelectorAll(`input[name="question-${question.id}"]:checked`);
+
+                if (radios.length === 0) {
+                    // Question is unanswered
+                    if (questionDiv) {
+                        questionDiv.classList.add('border-error');
+                    }
+                    hasUnansweredQuestions = true;
+                    if (!firstUnansweredQuestionElement) {
+                        firstUnansweredQuestionElement = questionDiv;
+                    }
                 } else {
-                    errorMessage.style.display = 'none';
+                    // Question is answered, remove error highlight
+                    if (questionDiv) {
+                        questionDiv.classList.remove('border-error');
+                    }
                 }
+            });
+
+            if (hasUnansweredQuestions) {
+                showMessage('Beantwoord asseblief alle vrae voordat jy indien.', 'error');
+                if (firstUnansweredQuestionElement) {
+                    firstUnansweredQuestionElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                return false;
+            } else {
+                messageBox.classList.add('hidden'); // Hide the message if all are answered
+                return true;
+            }
+        }
+
+        // Function to calculate MBTI result
+        function calculateMBTI(answers) {
+            const scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+
+            shuffledQuestions.forEach((question, index) => {
+                const selectedOptionValue = answers[`question-${question.id}`];
+                if (selectedOptionValue) {
+                    scores[selectedOptionValue]++;
+                }
+            });
+
+            let mbtiType = '';
+            mbtiType += (scores.E >= scores.I) ? 'E' : 'I'; // Default to E if tie
+            mbtiType += (scores.S >= scores.N) ? 'S' : 'N'; // Default to S if tie
+            mbtiType += (scores.T >= scores.F) ? 'T' : 'F'; // Default to T if tie
+            mbtiType += (scores.J >= scores.P) ? 'J' : 'P'; // Default to J if tie
+
+            return { mbtiType };
+        }
+
+        // Function to render questions
+        function renderQuestions() {
+            shuffledQuestions = shuffleArray([...allQuestions]); // Create a shallow copy and shuffle
+            questionsContainer.innerHTML = ''; // Clear previous questions
+
+            shuffledQuestions.forEach((question, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'bg-gray-50 p-5 rounded-lg shadow-sm border border-gray-200 border-l-4 border-custom-blue';
+                questionDiv.setAttribute('data-question-id', question.id); // Add data attribute for easier lookup
+
+                questionDiv.innerHTML = `
+                    <p class="text-gray-800 font-semibold mb-3">Vraag ${index + 1}: ${question.text}</p>
+                    <div class="space-y-2">
+                        ${question.options.map(option => `
+                            <label class="flex items-center p-3 border border-gray-300 rounded-md cursor-pointer hover:bg-blue-100 transition duration-200 ease-in-out">
+                                <input type="radio" name="question-${question.id}" value="${option.value}" data-question-text="${question.text}" data-option-text="${option.text}" class="form-radio h-5 w-5 text-blue-600">
+                                <span class="ml-3 text-gray-700">${option.text}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                `;
+                questionsContainer.appendChild(questionDiv);
+
+                // Add event listener to each radio button for real-time validation
+                const radioInputs = questionDiv.querySelectorAll(`input[name="question-${question.id}"]`);
+                radioInputs.forEach(radio => {
+                    radio.addEventListener('change', validateQuestionsRealTime);
+                });
+            });
+        }
+
+        // Event listener for form submission
+        submitBtn.addEventListener('click', async () => {
+            const userName = userNameInput.value.trim();
+            if (!userName) {
+                showMessage('Vul asseblief jou naam in.', 'error');
+                return;
             }
 
-            if (!allValid) {
-                displayMessageBox('Voltooi asseblief alle vrae korrek voordat u indien.');
-                return; // Stop the submission if not all valid
+            // Perform final validation before submission
+            if (!validateQuestionsRealTime()) {
+                return; // Stop submission if validation fails
             }
 
-            const formData = new FormData(this);
-            const mbtiScores = calculateMBTIScores(formData);
-            const mbtiType = determineMBTIType(mbtiScores);
+            const selectedAnswers = {};
+            let multipleAnswersSelected = false;
 
-            // Display results on the page
-            displayResults(userNameInput.value, mbtiType);
+            shuffledQuestions.forEach(question => {
+                const radios = document.querySelectorAll(`input[name="question-${question.id}"]:checked`);
+                if (radios.length === 1) {
+                    selectedAnswers[`question-${question.id}`] = radios[0].value;
+                } else if (radios.length > 1) {
+                    multipleAnswersSelected = true;
+                }
+            });
 
-            // Send results via EmailJS
+            if (multipleAnswersSelected) {
+                showMessage('Fout: Meer as een antwoord is vir \'n vraag gekies. Kies asseblief slegs een antwoord per vraag.', 'error');
+                return;
+            }
+
+            const { mbtiType } = calculateMBTI(selectedAnswers);
+
+            // Display results on screen
+            mbtiResultDisplay.textContent = mbtiType;
+            resultsContainer.classList.remove('hidden');
+
+            // Scroll to results
+            resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Prepare email parameters
             const templateParams = {
-                user_name: userNameInput.value,
-                mbti_type: mbtiType
+                user_name: userName,
+                mbti_result: mbtiType
             };
 
-            console.log('Attempting to send email with params:', templateParams);
-            console.log('Service ID:', 'service_cv71ym3');
-            console.log('Template ID:', 'template_ebjarcl');
-
-            // IMPORTANT: The Service ID is 'service_cv71ym3'.
-            // The Template ID is 'template_ebjarcl'.
-            emailjs.send('service_cv71ym3', 'template_ebjarcl', templateParams)
-                .then(function(response) {
-                    console.log('Email successfully sent!', response);
-                    displayMessageBox('MBTI resultate is gestuur!');
-                }, function(error) {
-                    console.error('Failed to send email:', error);
-                    displayMessageBox('Fout met e-pos stuur: ' + error.text);
-                });
+            // Send email using EmailJS
+            try {
+                const response = await emailjs.send('service_cv71ym3', 'template_ebjarcl', templateParams);
+                console.log('Email sent successfully!', response.status, response.text);
+                showMessage('Jou resultate is suksesvol per e-pos gestuur!', 'success');
+            } catch (error) {
+                console.error('Failed to send email:', error);
+                showMessage('Kon nie resultate per e-pos stuur nie. Probeer asseblief weer.', 'error');
+            }
         });
 
-        /**
-         * Calculates the MBTI scores based on the form data.
-         * @param {FormData} formData - The form data containing user selections.
-         * @returns {Object} An object with counts for each MBTI preference (E, I, S, N, T, F, J, P).
-         */
-        function calculateMBTIScores(formData) {
-            let scores = {
-                E: 0, I: 0,
-                S: 0, N: 0,
-                T: 0, F: 0,
-                J: 0, P: 0
-            };
-
-            // Questions 1-5 for Extroversion (E) / Introversion (I)
-            for (let i = 1; i <= 5; i++) {
-                const value = formData.get(`q${i}`);
-                if (value) {
-                    scores[value]++;
-                }
-            }
-
-            // Questions 6-10 for Sensing (S) / Intuition (N)
-            for (let i = 6; i <= 10; i++) {
-                const value = formData.get(`q${i}`);
-                if (value) {
-                    scores[value]++;
-                }
-            }
-
-            // Questions 11-15 for Thinking (T) / Feeling (F)
-            for (let i = 11; i <= 15; i++) {
-                const value = formData.get(`q${i}`);
-                if (value) {
-                    scores[value]++;
-                }
-            }
-
-            // Questions 16-20 for Judging (J) / Perceiving (P)
-            for (let i = 16; i <= 20; i++) {
-                const value = formData.get(`q${i}`);
-                if (value) {
-                    scores[value]++;
-                }
-            }
-
-            return scores;
-        }
-
-        /**
-         * Determines the final 4-letter MBTI type based on the calculated scores.
-         * @param {Object} scores - The object containing MBTI preference counts.
-         * @returns {string} The 4-letter MBTI type (e.g., "ISTJ", "ENFP").
-         */
-        function determineMBTIType(scores) {
-            let mbti = "";
-
-            // Determine E or I
-            mbti += (scores.E >= scores.I) ? 'E' : 'I';
-            // Determine S or N
-            mbti += (scores.S >= scores.N) ? 'S' : 'N';
-            // Determine T or F
-            mbti += (scores.T >= scores.F) ? 'T' : 'F';
-            // Determine J or P
-            mbti += (scores.J >= scores.P) ? 'J' : 'P';
-
-            return mbti;
-        }
-
-        /**
-         * Displays the MBTI results on the page.
-         * @param {string} userName - The name of the user.
-         * @param {string} mbtiType - The calculated MBTI type.
-         */
-        function displayResults(userName, mbtiType) {
-            document.getElementById('displayedUserName').textContent = userName;
-            document.getElementById('mbtiType').textContent = mbtiType;
-            document.getElementById('results').style.display = 'block';
-            // Smoothly scroll to the results section
-            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        /**
-         * Displays a custom message box instead of the browser's alert.
-         * This is a simple implementation; for a more robust solution,
-         * consider a dedicated modal library or more complex CSS/JS.
-         * @param {string} message - The message to display.
-         */
-        function displayMessageBox(message) {
-            // Create modal elements
-            const modalOverlay = document.createElement('div');
-            modalOverlay.style.cssText = `
-                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-                background: rgba(0, 0, 0, 0.6); display: flex; justify-content: center;
-                align-items: center; z-index: 1000;
-            `;
-            const messageBox = document.createElement('div');
-            messageBox.style.cssText = `
-                background: white; padding: 30px; border-radius: 10px;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); text-align: center;
-                max-width: 400px; width: 90%; font-family: 'Inter', sans-serif; color: #333;
-            `;
-            const messageText = document.createElement('p');
-            messageText.textContent = message;
-            messageText.style.cssText = `margin-bottom: 20px; font-size: 1.1em; line-height: 1.5;`;
-            const closeButton = document.createElement('button');
-            closeButton.textContent = 'OK';
-            closeButton.style.cssText = `
-                background-color: #764ba2; color: white; padding: 10px 20px;
-                border: none; border-radius: 5px; cursor: pointer; font-size: 1em;
-                transition: background-color 0.3s ease;
-            `;
-            closeButton.onmouseover = () => closeButton.style.backgroundColor = '#667eea';
-            closeButton.onmouseout = () => closeButton.style.backgroundColor = '#764ba2';
-            closeButton.onclick = () => { document.body.removeChild(modalOverlay); };
-            messageBox.appendChild(messageText);
-            messageBox.appendChild(closeButton);
-            modalOverlay.appendChild(messageBox);
-            document.body.appendChild(modalOverlay);
-        }
+        // Initial rendering of questions when the page loads
+        document.addEventListener('DOMContentLoaded', renderQuestions);
     </script>
 </body>
 </html>
